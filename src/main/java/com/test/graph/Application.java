@@ -19,6 +19,4 @@ public class Application extends WebMvcConfigurerAdapter {
         return "redirect:home";
     }
 
-
-
 }
