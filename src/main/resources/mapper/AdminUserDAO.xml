@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.graph.dao.AdminUserDAO" >
+  <resultMap id="BaseResultMap" type="com.test.graph.entity.AdminUser" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="role" property="role" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    <result column="locked" property="locked" jdbcType="BIT" />
+  </resultMap>
+
+
+  <sql id="allColumns">
+    id,username,email,password,role,created_time,updated_time,locked
+  </sql>
+  <sql id="allPropertys">
+    #{id},#{username},#{email},#{password},#{role},#{createdTime},#{updatedTime},#{locked}
+  </sql>
+
+
+  <select id="selectByName"  resultMap="BaseResultMap">
+    select
+    <include refid="allColumns" />
+    from admin_user
+    where username = #{username}
+  </select>
+
+
+
+  <select id="selectAll"  resultMap="BaseResultMap">
+    select
+    <include refid="allColumns" />
+    from admin_user
+  </select>
+
+
+</mapper>
