@@ -16,12 +16,21 @@ import java.util.Map;
 public class GraphQLService {
 
     @Autowired
-    private GraphQL graphQL;
+    @Qualifier("userGraphQL")
+    private GraphQL userGraphQL;
 
-    public Object resolve(Map<String,String> query) {
-        ExecutionResult executionResult = graphQL.execute(query.get("query"));
+    @Autowired
+    @Qualifier("adminUserGraphQL")
+    private GraphQL adminUserGraphQL;
+
+
+    public Object userresolve(Map<String,String> query) {
+        ExecutionResult executionResult = userGraphQL.execute(query.get("query"));
         return executionResult.getData();
     }
-    
 
+    public Object adminuserresolve(Map<String,String> query) {
+        ExecutionResult executionResult = adminUserGraphQL.execute(query.get("query"));
+        return executionResult.getData();
+    }
 }

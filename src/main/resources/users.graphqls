@@ -1,19 +1,12 @@
 schema {
-  query: Query
+  query: UserQuery
 }
-type Query {
-  adminUsers: [AdminUser]
-  users: [User]
+type UserQuery {
+  users: User
 }
 
-type AdminUser {
-  username: String!
-  email:String
-}
 type User {
   name: String!
   sex: String!
   mobile:String!
 }
-
-

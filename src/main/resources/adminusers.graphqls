@@ -1,0 +1,11 @@
+schema {
+  query: AdminQuery
+}
+type AdminQuery {
+  adminUsers: [AdminUser]
+}
+
+type AdminUser {
+  username: String!
+  email:String
+}

@@ -25,7 +25,7 @@ import static graphql.schema.GraphQLObjectType.newObject;
  *  用户管理
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/graphql")
 public class UserController {
 
 
@@ -44,9 +44,15 @@ public class UserController {
 
 
     @ResponseBody
-    @RequestMapping(value = "/graphql",method = RequestMethod.POST)
-    public Result graphyql(@RequestBody Map<String,String> query) {
-        return new Result("0","ok",graphQLService.resolve(query));
+    @RequestMapping(value = "/users",method = RequestMethod.POST)
+    public Result users(@RequestBody Map<String,String> query) {
+        return new Result("0","ok",graphQLService.userresolve(query));
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/adminusers",method = RequestMethod.POST)
+    public Result adminusers(@RequestBody Map<String,String> query) {
+        return new Result("0","ok",graphQLService.adminuserresolve(query));
     }
 
 }

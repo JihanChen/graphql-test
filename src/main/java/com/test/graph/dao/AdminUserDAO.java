@@ -4,7 +4,7 @@ import com.test.graph.entity.AdminUser;
 
 import java.util.List;
 
-public interface AdminUserDAO{
+public interface AdminUserDAO extends BaseDAO<AdminUser>{
 
    /**
     * 根据用户名称查询后台管理用户信息
@@ -13,11 +13,5 @@ public interface AdminUserDAO{
      */
    AdminUser selectByName(String username);
 
-
-   /**
-    * 根据用户名称查询后台管理用户信息
-    * @return 后台管理用户
-    */
-   List<AdminUser> selectAll();
 
 }
