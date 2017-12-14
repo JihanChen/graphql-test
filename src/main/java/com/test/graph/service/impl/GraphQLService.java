@@ -1,5 +1,6 @@
 package com.test.graph.service.impl;
 
+import graphql.ExecutionInput;
 import graphql.ExecutionResult;
 import graphql.GraphQL;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,16 @@ public class GraphQLService {
     private GraphQL adminUserGraphQL;
 
 
-    public Object userresolve(Map<String,String> query) {
-        ExecutionResult executionResult = userGraphQL.execute(query.get("query"));
+    public Object userresolve(Map<String,Object> requestParam) {
+
+        Map<String, Object> variables = (Map<String, Object>) requestParam.get("variables");
+
+        ExecutionInput executionInput = ExecutionInput.newExecutionInput()
+                .query(requestParam.get("query").toString())
+                .variables(variables)
+                .build();
+
+        ExecutionResult executionResult = userGraphQL.execute(executionInput);
         return executionResult.getData();
     }
 

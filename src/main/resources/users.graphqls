@@ -2,11 +2,19 @@ schema {
   query: UserQuery
 }
 type UserQuery {
-  users: User
+  users(request:XxRequest): User
 }
 
 type User {
+  id:ID!
   name: String!
   sex: String!
   mobile:String!
 }
+
+input XxRequest {
+  shopId: Long!
+  appVersion: String
+}
+
+

@@ -45,7 +45,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "/users",method = RequestMethod.POST)
-    public Result users(@RequestBody Map<String,String> query) {
+    public Result users(@RequestBody Map<String,Object> query) {
         return new Result("0","ok",graphQLService.userresolve(query));
     }
 

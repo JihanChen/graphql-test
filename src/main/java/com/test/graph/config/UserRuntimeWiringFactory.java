@@ -10,10 +10,26 @@ package com.test.graph.config;
 
 import com.test.graph.dao.BaseDAO;
 import com.test.graph.fetchers.UserQuery;
+import graphql.schema.GraphQLInputObjectType;
 import graphql.schema.idl.RuntimeWiring;
+
+import static graphql.Scalars.GraphQLID;
+import static graphql.Scalars.GraphQLString;
+import static graphql.schema.GraphQLInputObjectField.newInputObjectField;
+import static graphql.schema.GraphQLInputObjectType.newInputObject;
 
 public class UserRuntimeWiringFactory {
     public static RuntimeWiring getRuntimeWiring(BaseDAO baseDAO) {
+        GraphQLInputObjectType inputObjectType = newInputObject()
+                .name("request")
+                .field(newInputObjectField()
+                        .name("shopId")
+                        .type(GraphQLID))
+                .field(newInputObjectField()
+                        .name("appVersion")
+                        .type(GraphQLID))
+                .build();
+
         return RuntimeWiring.newRuntimeWiring()
                 .type("UserQuery", wiring -> wiring
                         .dataFetcher("users", new UserQuery(baseDAO))
