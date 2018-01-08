@@ -1,5 +1,7 @@
 package com.test.graph.entity;
 
+import org.apache.commons.lang3.StringUtils;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,11 +9,12 @@ import javax.persistence.Id;
 import java.util.Date;
 
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String name;
+    private String name = StringUtils.EMPTY;
 
     private String sex;
 

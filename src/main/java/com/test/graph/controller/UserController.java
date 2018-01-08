@@ -55,4 +55,10 @@ public class UserController {
         return new Result("0","ok",graphQLService.adminuserresolve(query));
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/adduser",method = RequestMethod.POST)
+    public Result adduser(@RequestBody Map<String,String> query) {
+        return new Result("0","ok",graphQLService.adduserresolve(query));
+    }
+
 }

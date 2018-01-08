@@ -1,0 +1,5 @@
+// mutation
+{ "mutation": "mutation{addusers(mobile:\"1345325653\",name:\"cds\"){name mobile}}"}
+
+// query
+{ "query": "{users{sex}}" }

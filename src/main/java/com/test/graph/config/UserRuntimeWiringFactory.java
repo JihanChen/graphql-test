@@ -9,6 +9,7 @@
 package com.test.graph.config;
 
 import com.test.graph.dao.BaseDAO;
+import com.test.graph.fetchers.UserMutation;
 import com.test.graph.fetchers.UserQuery;
 import graphql.schema.GraphQLInputObjectType;
 import graphql.schema.idl.RuntimeWiring;
@@ -33,6 +34,9 @@ public class UserRuntimeWiringFactory {
         return RuntimeWiring.newRuntimeWiring()
                 .type("UserQuery", wiring -> wiring
                         .dataFetcher("users", new UserQuery(baseDAO))
+                )
+                .type("UserMutation", wiring -> wiring
+                        .dataFetcher("addusers", new UserMutation())
                 )
                 .build();
     }

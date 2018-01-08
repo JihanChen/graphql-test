@@ -1,8 +1,12 @@
 schema {
   query: UserQuery
+  mutation: UserMutation
 }
 type UserQuery {
   users(request:XxRequest): User
+}
+type UserMutation {
+  addusers(mobile:String,name:String): User
 }
 
 type User {

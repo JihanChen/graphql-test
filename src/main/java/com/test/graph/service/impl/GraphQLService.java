@@ -42,4 +42,11 @@ public class GraphQLService {
         ExecutionResult executionResult = adminUserGraphQL.execute(query.get("query"));
         return executionResult.getData();
     }
+
+
+    public Object adduserresolve(Map<String,String> query) {
+        ExecutionInput executionInput = new ExecutionInput(query.get("mutation"),null,null,null,null);
+        ExecutionResult executionResult = userGraphQL.execute(executionInput);
+        return executionResult.getData();
+    }
 }
